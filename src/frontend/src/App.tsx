@@ -7,6 +7,7 @@ import CommunityFeed from "./components/CommunityFeed";
 import FloatingMusicPlayer from "./components/FloatingMusicPlayer";
 import GlobalChat from "./components/GlobalChat";
 import HeroSection from "./components/HeroSection";
+import HindiSongsPlayer from "./components/HindiSongsPlayer";
 import MoodMusicPlayer from "./components/MoodMusicPlayer";
 import MoodPicker from "./components/MoodPicker";
 import Navbar from "./components/Navbar";
@@ -87,6 +88,7 @@ export default function App() {
               <div className="sticky top-20 space-y-5">
                 <Sidebar selectedMood={selectedMood} />
                 <MoodMusicPlayer selectedMood={selectedMood} />
+                <HindiSongsPlayer />
               </div>
             </div>
           </div>
