@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    --background: 0.97 0.005 270;
+    --foreground: 0.18 0.01 270;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.01 270;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.01 270;
+
+    --primary: 0.2 0.01 270;
+    --primary-foreground: 0.99 0 0;
+
+    --secondary: 0.92 0.04 285;
+    --secondary-foreground: 0.3 0.06 285;
+
+    --muted: 0.95 0.01 270;
+    --muted-foreground: 0.52 0.02 270;
+
+    --accent: 0.92 0.05 165;
+    --accent-foreground: 0.25 0.06 165;
+
+    --destructive: 0.6 0.22 22;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.9 0.01 270;
+    --input: 0.9 0.01 270;
+    --ring: 0.6 0.08 285;
+
+    --mood-happy: 0.87 0.14 85;
+    --mood-sad: 0.78 0.1 235;
+    --mood-stress: 0.78 0.1 295;
+    --mood-love: 0.78 0.12 350;
+    --mood-angry: 0.65 0.19 25;
+    --mood-anxious: 0.82 0.13 65;
+    --mood-hopeful: 0.82 0.1 145;
+
+    --chart-1: 0.87 0.14 85;
+    --chart-2: 0.78 0.1 235;
+    --chart-3: 0.78 0.1 295;
+    --chart-4: 0.78 0.12 350;
+    --chart-5: 0.65 0.19 25;
+
+    --sidebar: 0.98 0.005 270;
+    --sidebar-foreground: 0.18 0.01 270;
+    --sidebar-primary: 0.2 0.01 270;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.92 0.04 285;
+    --sidebar-accent-foreground: 0.3 0.06 285;
+    --sidebar-border: 0.9 0.01 270;
+    --sidebar-ring: 0.6 0.08 285;
+  }
+
+  .dark {
+    --background: 0.12 0.01 270;
+    --foreground: 0.95 0.005 270;
+    --card: 0.16 0.01 270;
+    --card-foreground: 0.95 0.005 270;
+    --popover: 0.16 0.01 270;
+    --popover-foreground: 0.95 0.005 270;
+
+    --primary: 0.92 0.04 285;
+    --primary-foreground: 0.12 0.01 270;
+
+    --secondary: 0.22 0.04 285;
+    --secondary-foreground: 0.85 0.03 285;
+
+    --muted: 0.2 0.01 270;
+    --muted-foreground: 0.65 0.02 270;
+
+    --accent: 0.25 0.06 165;
+    --accent-foreground: 0.9 0.04 165;
+
+    --destructive: 0.55 0.22 22;
+    --destructive-foreground: 0.99 0 0;
+
+    --border: 0.25 0.01 270;
+    --input: 0.25 0.01 270;
+    --ring: 0.6 0.08 285;
+
+    --sidebar: 0.14 0.01 270;
+    --sidebar-foreground: 0.95 0.005 270;
+    --sidebar-primary: 0.92 0.04 285;
+    --sidebar-primary-foreground: 0.12 0.01 270;
+    --sidebar-accent: 0.22 0.04 285;
+    --sidebar-accent-foreground: 0.85 0.03 285;
+    --sidebar-border: 0.25 0.01 270;
+    --sidebar-ring: 0.6 0.08 285;
+
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: "Poppins", "Figtree", system-ui, sans-serif;
+    background: linear-gradient(
+      135deg,
+      #d9ccff 0%,
+      #bfefe3 35%,
+      #bfe7f3 65%,
+      #f7c7b8 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+    transition: background 0.4s ease, color 0.3s ease;
+  }
+
+  .dark body,
+  .dark {
+    background: linear-gradient(
+      135deg,
+      #1a1035 0%,
+      #0d2030 35%,
+      #0d1f25 65%,
+      #2d1520 100%
+    );
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .mood-chip-happy {
+    background-color: #f6d56a;
+    color: #5a4200;
+  }
+  .mood-chip-sad {
+    background-color: #8fc9ff;
+    color: #0a2d5a;
+  }
+  .mood-chip-stress {
+    background-color: #c6a7ff;
+    color: #2d0a5a;
+  }
+  .mood-chip-love {
+    background-color: #f7a3c8;
+    color: #5a0a2d;
+  }
+  .mood-chip-angry {
+    background-color: #f46d63;
+    color: #fff;
+  }
+  .mood-chip-anxious {
+    background-color: #f5b36b;
+    color: #5a3100;
+  }
+  .mood-chip-hopeful {
+    background-color: #a7dea4;
+    color: #0a3d12;
+  }
+
+  .solution-card-happy {
+    background-color: #fffbec;
+    border-color: #f6d56a;
+  }
+  .solution-card-sad {
+    background-color: #eef7ff;
+    border-color: #8fc9ff;
+  }
+  .solution-card-stress {
+    background-color: #f5efff;
+    border-color: #c6a7ff;
+  }
+  .solution-card-love {
+    background-color: #fff0f7;
+    border-color: #f7a3c8;
+  }
+  .solution-card-angry {
+    background-color: #fff0ef;
+    border-color: #f46d63;
+  }
+  .solution-card-anxious {
+    background-color: #fff6ee;
+    border-color: #f5b36b;
+  }
+  .solution-card-hopeful {
+    background-color: #eefaee;
+    border-color: #a7dea4;
+  }
+
+  .dark .solution-card-happy {
+    background-color: rgba(246, 213, 106, 0.08);
+  }
+  .dark .solution-card-sad {
+    background-color: rgba(143, 201, 255, 0.08);
+  }
+  .dark .solution-card-stress {
+    background-color: rgba(198, 167, 255, 0.08);
+  }
+  .dark .solution-card-love {
+    background-color: rgba(247, 163, 200, 0.08);
+  }
+  .dark .solution-card-angry {
+    background-color: rgba(244, 109, 99, 0.08);
+  }
+  .dark .solution-card-anxious {
+    background-color: rgba(245, 179, 107, 0.08);
+  }
+  .dark .solution-card-hopeful {
+    background-color: rgba(167, 222, 164, 0.08);
+  }
+
+  .card-glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .dark .card-glass {
+    background: rgba(30, 25, 50, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .bg-white\/60 {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .dark .bg-white\/90 {
+    background: rgba(20, 18, 35, 0.92) !important;
+  }
+
+  .dark .bg-white\/95 {
+    background: rgba(16, 14, 30, 0.96) !important;
+  }
+
+  .dark .bg-white\/98 {
+    background: rgba(14, 12, 25, 0.99) !important;
+  }
+
+  .dark .bg-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
