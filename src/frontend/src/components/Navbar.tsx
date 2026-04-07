@@ -32,6 +32,7 @@ export default function Navbar({
     { label: "Community", href: "#feed" },
     { label: "Support", href: "#support" },
     { label: "Chat", href: "#global-chat" },
+    { label: "🎮 Game", href: "#game" },
   ];
 
   return (
@@ -55,12 +56,16 @@ export default function Navbar({
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                link.href === "#game"
+                  ? "text-yellow-500 dark:text-yellow-400 hover:text-yellow-400 dark:hover:text-yellow-300 font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               data-ocid="nav.link"
             >
               {link.label}
@@ -118,7 +123,11 @@ export default function Navbar({
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border/50 last:border-0"
+              className={`text-sm font-medium py-2 border-b border-border/50 last:border-0 ${
+                link.href === "#game"
+                  ? "text-yellow-500 dark:text-yellow-400 font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               onClick={() => setMenuOpen(false)}
               data-ocid="nav.link"
             >

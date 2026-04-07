@@ -1,38 +1,53 @@
-# All Mood Be Happy — 90s Hindi Songs Feature
+# Maze of Abhimanyu — Horror Upgrade
 
 ## Current State
-The app is a full-stack emotional support platform on Internet Computer. The sidebar contains a `MoodMusicPlayer` component with 5 English songs per mood (Happy, Sad, Stress, Love, Angry, Anxious, Hopeful). Songs are shown in a collapsible list; clicking play loads a YouTube iframe. No Bollywood/Hindi category exists.
+- Game is a circular (Chakravyuh) maze survival game with 50 levels
+- Has puzzle door system: locked gates that require solving math/memory/pattern challenges
+- BackgroundEngine.ts has basic fog/ghost system with 4 themes (dawn/shadow/horror/extreme)
+- LevelManager.ts tracks `puzzleDoorCount` per level
+- MazeGame.tsx wires up PuzzleOverlay.tsx and PuzzleSystem.ts
+- PuzzleOverlay.tsx is a full quiz UI that freezes gameplay
+- PuzzleSystem.ts generates puzzle door data
 
 ## Requested Changes (Diff)
 
 ### Add
-- New `HindiSongsPlayer` component (src/frontend/src/components/HindiSongsPlayer.tsx)
-  - A dedicated "90s Hindi Songs" section with a collapsible panel
-  - 25 curated 90s Bollywood songs with: title, artist, YouTube videoId
-  - Categorized by emotion tab: Love, Sad, Happy, Calm
-  - Song cards with play button; YouTube iframe loads ONLY on click (lazy load)
-  - Only one song plays at a time (stop current before starting new)
-  - "Load More" button (show 6 initially, +6 per click)
-  - "Shuffle Songs" button (randomizes order within current category)
-  - Dark mode + mobile responsive
-  - Smooth animations (framer-motion)
+- Extreme horror background system for levels 1–50 with 5 distinct tiers:
+  - L1–10: Light fog particles, dark blue/purple, slow movement
+  - L11–20: Ghost shadows moving, flickering light, whisper triggers
+  - L21–30: Fast fog + green/red glow pulses, ghost silhouettes, screen shake
+  - L31–40: Dark red theme, wave distortion, random glitch flicker, shadow flashes
+  - L41–50: EXTREME MODE — heavy distortion, strong glitch, heartbeat pulse, ghost faces, random blackouts
+- Particle-based fog with requestAnimationFrame integration
+- Parallax background layers
+- Random ghost spawn/fade logic
+- Horror audio: ambient drone, whispers, footsteps, heartbeat, sharp spikes
+- FPS-adaptive particle reduction
+- Mobile particle cap
 
 ### Modify
-- `src/frontend/src/App.tsx`: Add `<HindiSongsPlayer />` below `<MoodMusicPlayer>` in the sticky sidebar
+- `BackgroundEngine.ts` — Full rewrite with 5-tier horror system L1–50
+- `LevelManager.ts` — Remove `puzzleDoorCount` field from config
+- `MazeGame.tsx` — Remove all puzzle imports, state, callbacks, game-loop triggers, and JSX
 
 ### Remove
-- Nothing removed
+- `PuzzleOverlay.tsx` — Delete entirely
+- `PuzzleSystem.ts` — Delete entirely
+- All locked gates requiring puzzle interaction
+- All puzzle proximity detection in game loop
+- `createPuzzleDoors`, `handlePuzzleAnswer`, `handlePuzzleTimeout` functions
+- `activePuzzle`, `activePuzzleGateId` state and refs
 
 ## Implementation Plan
-1. Create `HindiSongsPlayer.tsx` with:
-   - Static data: 25 songs split across Love/Sad/Happy/Calm categories
-   - Tab bar to switch emotion categories
-   - State: activeCategory, visibleCount (6, +6 on Load More), shuffledList, playingId
-   - Song card: thumbnail placeholder, title, artist, play button
-   - On play: set playingId, render YouTube iframe only for that song (stops others)
-   - Shuffle: Fisher-Yates shuffle on current category's list, reset visibleCount
-   - Load More: increment visibleCount by 6
-   - Collapsible header toggle (AnimatePresence)
-2. Wire into App.tsx sidebar below MoodMusicPlayer
-3. Validate (lint + typecheck + build)
-4. Deploy to production
+1. Delete `src/frontend/src/components/PuzzleOverlay.tsx`
+2. Delete `src/frontend/src/game/PuzzleSystem.ts`
+3. Rewrite `BackgroundEngine.ts` with full 5-tier horror system (L1–50)
+4. Update `LevelManager.ts` — remove `puzzleDoorCount` from return object and type
+5. Update `MazeGame.tsx`:
+   - Remove puzzle imports (lines 5-6, 38)
+   - Remove `activePuzzleRef`, `activePuzzle`, `activePuzzleGateId` state
+   - Remove puzzle proximity block from game loop
+   - Remove `createPuzzleDoors` call from `startGame`
+   - Remove `handlePuzzleAnswer` and `handlePuzzleTimeout` callbacks
+   - Remove `<PuzzleOverlay>` JSX block
+   - Replace locked puzzle doors with always-open/random-rotating gates
